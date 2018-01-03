@@ -1,14 +1,13 @@
 # xy-zhihu
 
-> A Vue.js project
+模仿此项目：https://github.com/walleeeee/daily-zhihu
+感谢原作者：walleeeee
 
-## Build Setup
+api来自知乎( 知乎Zhihu ), 项目中所有内容的一切权利属于知乎, 本项目所有内容及代码仅供私下学习参考, 不得作为其他用途
 
-``` bash
-# install dependencies
+运行方法：
 npm install
 
-# serve with hot reload at localhost:8080
 npm run dev
 
 # build for production with minification

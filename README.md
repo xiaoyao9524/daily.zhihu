@@ -2,10 +2,11 @@
 
 模仿此项目：https://github.com/walleeeee/daily-zhihu
 感谢原作者：walleeeee
-
+(只为学习，不为其它)
 api来自知乎( 知乎Zhihu ), 项目中所有内容的一切权利属于知乎, 本项目所有内容及代码仅供私下学习参考, 不得作为其他用途
 
-运行方法：
+# 运行方法：
+
 npm install
 
 npm run dev

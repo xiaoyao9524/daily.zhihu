@@ -1,8 +1,8 @@
 import * as types from './mutation-types'
 
 const mutations = {
-  [types.TOGGLE_FLAG] (state) {
-    state.flag = !state.flag;
+  [types.TOGGLE_MENU_SHOW_FLAG] (state) {
+    state.menuShowFlag = !state.menuShowFlag;
   }
 };
 

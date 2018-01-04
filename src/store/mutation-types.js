@@ -1,3 +1,3 @@
-export const TOGGLE_FLAG = 'TOGGLE_FLAG';
+export const TOGGLE_MENU_SHOW_FLAG = 'TOGGLE_MENU_SHOW_FLAG';
 
 export const SET_FLAG = 'SET_FLAG';

@@ -2,7 +2,7 @@
   <div class="home-wrapper" ref="homeWrapper" @scroll="onScroll($event)">
     <div class="home" ref="home">
       <div class="slider">
-        <my-swiper v-show="sliderList.length">
+        <my-swiper v-if="sliderList.length">
           <div class="swiper-wrapper">
               <div class="swiper-slide" v-for="item in sliderList" :width="windowWidth">
                 <img :src="item.image">
@@ -41,7 +41,6 @@
         sliderList: [],
         nowDate: -1,
         nextDate: -1,
-        scroll: 0,
         pending: false
       }
     },
@@ -83,13 +82,7 @@
         let homeWrpHeight = this.$refs.homeWrapper.offsetHeight; // homeWrapper的高度
         let homeHeight = this.$refs.home.offsetHeight; // home的高度
         let scrollY = ev.target.scrollTop; // 滚动的距离
-        this.scroll = ev.target.scrollTop;
-        // console.log("homeWrapper的高度是：", homeWrpHeight);
-        // console.log("home的高度是：", homeHeight);
-        // console.log("滚动高度是：", scrollY);
-        console.log((homeHeight - scrollY) , (homeWrpHeight))
         if ((homeHeight - scrollY) <= (homeWrpHeight + 100)) {
-          console.log("要请求了")
           this.getNews(this.nextDate)
         }
       }

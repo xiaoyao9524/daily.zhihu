@@ -16,7 +16,7 @@
       setTimeout(() => {
         var mySwiper = new Swiper('.swiper-container', {
           loop: false,
-          autoplay: 3000,
+          autoplay: 2000,
           autoplayDisableOnInteraction: false,
           pagination: '.swiper-pagination',
         })

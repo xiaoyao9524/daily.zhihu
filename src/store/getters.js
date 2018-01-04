@@ -1,1 +1,1 @@
-export const flag = state => state.flag;
+export const menuShowFlag = state => state.menuShowFlag;

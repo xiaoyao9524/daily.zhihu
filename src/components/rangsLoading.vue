@@ -1,15 +1,17 @@
 <template>
   <div class="rings-loading">
-    <svg class="loader-circular" viewBox="25 25 50 50">
-      <circle class="loader-path"
-              cx="50"
-              cy="50"
-              r="20"
-              fill="none"
-              stroke-width="5"
-              stroke-miterlimit="10"
-      ></circle>
-    </svg>
+    <div class="svg-wrapper">
+      <svg class="loader-circular" viewBox="25 25 50 50">
+        <circle class="loader-path"
+                cx="50"
+                cy="50"
+                r="20"
+                fill="none"
+                stroke-width="5"
+                stroke-miterlimit="10"
+        ></circle>
+      </svg>
+    </div>
     <p class="infinite-scroll-text">正在加载中......</p>
   </div>
 </template>
@@ -25,10 +27,16 @@
     position: relative;
     z-index: 99999;
     width: 100%;
-    height: 60px;
-    margin: 0 auto;
+    height: 80px;
+    margin: 0 auto 10px;
     padding: 10px 0;
     text-align: center;
+    overflow: hidden;
+  }
+  .svg-wrapper {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
   }
   .infinite-scroll {
     display: flex;
@@ -40,7 +48,7 @@
   }
 
   .infinite-scroll-text {
-    margin: 40px 0 20px 16px;
+    padding: 15px 0 20px 16px;
     font-size: 16px;
   }
   .loader {

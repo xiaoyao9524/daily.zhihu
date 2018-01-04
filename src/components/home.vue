@@ -1,30 +1,44 @@
 <template>
-  <div class="home-wrapper" ref="homeWrapper" @scroll="onScroll($event)">
-    <div class="home" ref="home">
-      <div class="slider">
-        <my-swiper v-if="sliderList.length">
-          <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="item in sliderList" :width="windowWidth">
-                <img :src="item.image">
-                <h3>{{item.title}}</h3>
-                <div class="mask"></div>
-              </div>
-          </div>
-        </my-swiper>
-      </div>
-      <div class="list">
-        <div class="list-item" v-for="item in dataList">
-          <p class="item-date">{{ item.date }}</p>
-          <div class="item" v-for="child in item.stories">
-            <img :src="child.images[0]">
-            <p v-html="child.title"></p>
+  <transition name="v-home">
+    <div class="home-wrapper" ref="homeWrapper" @scroll="onScroll($event)">
+      <div class="home" ref="home">
+        <div class="slider">
+          <my-swiper v-if="sliderList.length">
+            <div class="swiper-wrapper">
+                <div
+                  class="swiper-slide"
+                  v-for="item in sliderList"
+                  :width="windowWidth"
+                  @click="openArticle(item.id)"
+                >
+                  <img :src="item.image">
+                  <h3>{{item.title}}</h3>
+                  <div class="mask"></div>
+                </div>
+            </div>
+          </my-swiper>
+        </div>
+        <div class="list">
+          <div
+            class="list-item"
+            v-for="item in dataList"
+          >
+            <p class="item-date">{{ item.date }}</p>
+            <div
+              class="item"
+              v-for="child in item.stories"
+              @click="openArticle(child.id)"
+            >
+              <img :src="child.images[0]">
+              <p v-html="child.title"></p>
+            </div>
           </div>
         </div>
+        <rangs-loading v-show="first"></rangs-loading>
+        <loading v-show="!sliderList.length"></loading>
       </div>
-      <rangs-loading v-show="first"></rangs-loading>
-      <loading v-show="!sliderList.length"></loading>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -32,6 +46,7 @@
   import MySwiper from './swiper';
   import Loading from './loading';
   import RangsLoading from "./rangsLoading"
+  import {mapMutations} from 'vuex'
 
   export default {
     data () {
@@ -46,6 +61,9 @@
     },
     created () {
       this.getNews();
+    },
+    activated () {
+      this.setIsOpenArticle(false);
     },
     methods: {
       getNews (res = "news/latest") {
@@ -85,7 +103,17 @@
         if ((homeHeight - scrollY) <= (homeWrpHeight + 100)) {
           this.getNews(this.nextDate)
         }
-      }
+      },
+      openArticle (id) {
+        console.log("点击元素的ID为：", id);
+        this.setIsOpenArticle(true);
+        this.$router.push({
+          path: `/article?id=${id}`
+        })
+      },
+      ...mapMutations({
+        setIsOpenArticle: "SET_IS_OPEN_ARTICLE"
+      })
     },
     computed: {
       windowWidth () {
@@ -103,6 +131,17 @@
 
 <style scoped lang="sass">
   @import "../common/sass/base.sass"
+  .v-home
+    opacity: 1
+    transform: translateX(0)
+  .v-home-enter-active, .v-home-leave-active
+    transition: .3s
+  .v-home-enter, .v-home-leave-to
+    opacity: 0
+    transform: translateX(-20%)
+  .v-home-enter-to, .v-home-leave
+    opacity: 1
+    transform: translateX(0)
   .home-wrapper
     position: absolute
     top: 0
@@ -144,18 +183,18 @@
         .item
           display: flex
           align-items: center
-          margin: 0 auto
-          padding: #{18px/$rem}rem 0
-          box-sizing: border-box
-          width: #{396px/$rem}rem
+          margin: #{20px/$rem}rem auto 0
+          // padding: #{18px/$rem}rem 0
+          // box-sizing: border-box
+          width: #{360px/$rem}rem
           height: #{114px/$rem}rem
-          padding: #{12px/$rem}rem 0 #{8px/$rem}rem #{12px/$rem}rem
+          // padding: #{12px/$rem}rem 0 #{8px/$rem}rem #{12px/$rem}rem
           font-size: 0
           background-color: #fff
           box-shadow: 0 3px 10px 0 rgba(91, 115, 146, 0.15)
           border-radius: #{5px/$rem}rem
           img
-            margin-right: #{18px/$rem}rem
+            margin: 0 #{9px/$rem}rem
             width: #{90px/$rem}rem
             height: #{90px/$rem}rem
           p

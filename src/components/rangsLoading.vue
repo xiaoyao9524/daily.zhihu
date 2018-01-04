@@ -27,28 +27,20 @@
     position: relative;
     z-index: 99999;
     width: 100%;
-    height: 80px;
-    margin: 0 auto 10px;
-    padding: 10px 0;
+    height: 100px;
     text-align: center;
     overflow: hidden;
   }
   .svg-wrapper {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 30px;
     height: 30px;
-    margin: 0 auto;
   }
-  .infinite-scroll {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 8px;
-    line-height: 36px;
-    width: 100%;
-  }
-
   .infinite-scroll-text {
-    padding: 15px 0 20px 16px;
+    padding: 50px 0 20px 16px;
     font-size: 16px;
   }
   .loader {

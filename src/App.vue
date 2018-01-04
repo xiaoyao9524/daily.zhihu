@@ -1,8 +1,8 @@
 <template>
   <div class="app">
     <header class="v-header">
-      <i @click="toggleMenuShowFlag" class="iconfont icon-ic_menu"></i>
-      <i v-if="false" @click="toggleMenu" class="iconfont icon-ic_back"></i>
+      <i v-if="!isOpenArticle" @click="openMenu" class="iconfont icon-ic_menu"></i>
+      <i v-if="isOpenArticle" @click="back" class="iconfont icon-ic_back"></i>
     </header>
     <aside @click="toggleMenuShowFlag" class="menu" :class="{open: menuShowFlag}">
       <div class="mask"></div>
@@ -21,7 +21,9 @@
         </li>
       </ul>
     </aside>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
@@ -54,17 +56,26 @@
           console.log("左侧列表数据为:", this.menuList)
         })
       },
+      openMenu () {
+        this.toggleMenuShowFlag();
+        this.setIsOpenArticle(false);
+      },
       jump (index, item) {
         this.currentId = index;
-        console.log(index)
+        console.log(index);
+      },
+      back () {
+        this.$router.back();
       },
       ...mapMutations({
-        toggleMenuShowFlag: 'TOGGLE_MENU_SHOW_FLAG'
+        toggleMenuShowFlag: 'TOGGLE_MENU_SHOW_FLAG',
+        setIsOpenArticle: 'SET_IS_OPEN_ARTICLE'
       })
     },
     computed: {
       ...mapGetters([
-        'menuShowFlag'
+        'menuShowFlag',
+        'isOpenArticle'
       ])
     }
   }

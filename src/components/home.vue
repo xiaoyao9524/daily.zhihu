@@ -42,7 +42,7 @@
 </template>
 
 <script>
-  import ROOT_URL from '../api/base';
+  import {ROOT_URL} from '../api/base';
   import MySwiper from './swiper';
   import Loading from './loading';
   import RangsLoading from "./rangsLoading"

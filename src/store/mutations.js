@@ -8,7 +8,10 @@ const mutations = {
     state.isOpenArticle = flag;
   },
   [types.TOGGLE_IS_OPEN_ARTICLE] (state) {
-    state.TOGGLE_IS_OPEN_ARTICLE = !this.TOGGLE_IS_OPEN_ARTICLE;
+    state.isOpenArticle = state.isOpenArticle;
+  },
+  [types.SET_THEME_ID] (state, id) {
+    state.themeID = id;
   }
 };
 

@@ -1,3 +1,4 @@
- const ROOT_URL = "https://zhihu-agent.herokuapp.com/get?api=/4/";
+export const ROOT_URL = "https://zhihu-agent.herokuapp.com/get?api=/4/";
 
- export default ROOT_URL;
+export const THEME_URL = "https://zhihu-agent.herokuapp.com/get?api=/4/theme/";
+

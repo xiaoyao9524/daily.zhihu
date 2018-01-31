@@ -10,7 +10,7 @@
         <li
           v-for="(item, index) in menuList"
           :class="{current: index === currentId}"
-          @click="jump(index, item)"
+          @click="_setThemeId(item.id)"
         >
           <span>{{ item.name }}</span>
           <i class="iconfont" :class="{'icon-ic_star': index !== currentId,'icon-ic_star_black': index === currentId}"></i>
@@ -29,7 +29,7 @@
 
 <script>
   import {mapGetters, mapMutations} from 'vuex';
-  import ROOT_URL from './api/base'
+  import {ROOT_URL} from './api/base'
   export default {
     name: 'app',
     data () {
@@ -53,23 +53,27 @@
           for (let i = 0; i < res.data.others.length; i++) {
             this.menuList.push(res.data.others[i]);
           }
-          console.log("左侧列表数据为:", this.menuList)
+          // console.log("左侧列表数据为:", this.menuList)
         })
       },
       openMenu () {
         this.toggleMenuShowFlag();
         this.setIsOpenArticle(false);
       },
-      jump (index, item) {
-        this.currentId = index;
-        console.log(index);
+      _setThemeId (id) {
+        this.setThemeId(id);
+        // console.log(id);
+        this.$router.push({
+          path: "/theme?id=" + id
+        })
       },
       back () {
         this.$router.back();
       },
       ...mapMutations({
         toggleMenuShowFlag: 'TOGGLE_MENU_SHOW_FLAG',
-        setIsOpenArticle: 'SET_IS_OPEN_ARTICLE'
+        setIsOpenArticle: 'SET_IS_OPEN_ARTICLE',
+        setThemeId: 'SET_THEME_ID'
       })
     },
     computed: {

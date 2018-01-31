@@ -29,10 +29,15 @@
           vBody: "",
           title: ""
         },
-        test: ""
+        test: "",
+        oldQuery: ""
       }
     },
     activated () {
+      if (this.oldQuery === this.$route.query.id) {
+        return
+      }
+      this.oldQuery = this.$route.query.id;
       this.content.vBody = "";
       this.content.imgUrl = "";
       this.content.title = "";
@@ -138,6 +143,7 @@
             text-align: center
             margin-top: #{10px/$rem}rem
           & img
+            display: block
             max-width: 100%
             margin: 0 auto
         & .view-more

@@ -166,7 +166,7 @@
     .list
       .list-item
         position: relative
-        padding-top: #{40px/$rem}rem
+        padding-top: #{14px/$rem}rem
         z-index: 99
         margin-top: .8rem
         .item-date
@@ -184,7 +184,7 @@
           display: flex
           align-items: center
           margin: #{20px/$rem}rem auto 0
-          // padding: #{18px/$rem}rem 0
+          padding-right: #{6px/$rem}rem
           // box-sizing: border-box
           width: #{360px/$rem}rem
           height: #{114px/$rem}rem

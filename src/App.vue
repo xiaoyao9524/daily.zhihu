@@ -1,9 +1,11 @@
 <template>
   <div class="app">
+    <!--头部-->
     <header class="v-header">
       <i v-if="!isOpenArticle" @click="openMenu" class="iconfont icon-ic_menu"></i>
       <i v-if="isOpenArticle" @click="back" class="iconfont icon-ic_back"></i>
     </header>
+    <!--左侧列表-->
     <aside @click="toggleMenuShowFlag" class="menu" :class="{open: menuShowFlag}">
       <div class="mask"></div>
       <ul>
@@ -21,6 +23,7 @@
         </li>
       </ul>
     </aside>
+    <!--路由-->
     <keep-alive>
       <router-view/>
     </keep-alive>
@@ -61,10 +64,13 @@
         this.setIsOpenArticle(false);
       },
       _setThemeId (id) {
-        this.setThemeId(id);
+        this.setThemeId(id)
         // console.log(id);
         this.$router.push({
-          path: "/theme?id=" + id
+          path: "/theme",
+          params: {
+            id
+          }
         })
       },
       back () {
@@ -90,10 +96,6 @@
   @import "./common/sass/base.sass"
   @import "./common/sass/fontIcon.sass"
   .app
-    /*position: absolute*/
-    /*top: 0*/
-    /*left: 0*/
-    /*min-width: 100vw*/
     .v-header
       position: fixed
       z-index: 100

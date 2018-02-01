@@ -72,7 +72,7 @@
         } else {
           this.pending = true;
         }
-        console.log("传进来的值为：", res);
+        // console.log("传进来的值为：", res);
         let url = ROOT_URL + res
         this.$http.get(url).then((res) => {
 
@@ -87,8 +87,8 @@
 
           this.nowDate = Number(res.data.date)
           this.nextDate = "news/before/" + this.nowDate;
-          console.log("下一个要发送的值为", this.nowDate);
-          console.log("现在的列表数据为：", this.dataList);
+          // console.log("下一个要发送的值为", this.nowDate);
+          // console.log("现在的列表数据为：", this.dataList);
 
           this.pending = false
         })
@@ -105,7 +105,7 @@
         }
       },
       openArticle (id) {
-        console.log("点击元素的ID为：", id);
+        // console.log("点击元素的ID为：", id);
         this.setIsOpenArticle(true);
         this.$router.push({
           path: `/article?id=${id}`

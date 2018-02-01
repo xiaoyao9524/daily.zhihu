@@ -6,7 +6,6 @@
         <div class="v-content-img-title-mask"></div>
         <img
           class="title-img"
-          v-if="content.imgUrl.length"
           :src="content.imgUrl"
         >
       </div>
@@ -45,11 +44,11 @@
     },
     methods: {
       getData () {
-        console.log("要发送的ID为：", this.$route.query.id)
+        // console.log("要发送的ID为：", this.$route.query.id)
         this.test = this.$route.query.id;
         let url = "https://zhihu-agent.herokuapp.com/get?api=/4/news/".concat(this.$route.query.id);
         this.$http.get(url).then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           this.content.imgUrl = res.data.image;
           this.content.title = res.data.title;
           this.content.vBody = res.data.body;
